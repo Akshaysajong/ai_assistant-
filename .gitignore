@@ -20,8 +20,16 @@ data/*.db
 *.webp
 *.ico
 
+# Video files
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.wmv
+*.flv
+*.webm
+
 # Model files
-*.pt
 *.pth
 *.onnx
 *.weights
