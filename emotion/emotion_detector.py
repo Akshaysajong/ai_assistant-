@@ -60,7 +60,6 @@ class EmotionDetector:
         start_time = time.time()
         
         try:
-            print("++++++++++++++++++++++++++++++++++++++++")
             if face_image is None:
                 if self.enable_logging:
                     logger.warning("Received None face image")
@@ -75,13 +74,12 @@ class EmotionDetector:
 
             # Convert BGR to RGB
             rgb = cv2.cvtColor(face_image, cv2.COLOR_BGR2RGB)
-            print("rgb:", rgb)
             
             emotion, scores = self.model.predict_emotions(
                 rgb,
                 logits=True
             )
-            print("emotion:", emotion)
+
             confidence = torch.softmax(
                 torch.tensor(scores),
                 dim=0
