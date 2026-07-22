@@ -8,7 +8,6 @@ myenv/
 *.db
 *.sqlite
 *.sqlite3
-data/*.db
 
 # Image files
 *.jpg
