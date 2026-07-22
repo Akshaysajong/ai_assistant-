@@ -1,0 +1,40 @@
+Collecting insightface
+  Downloading insightface-1.0.1-py3-none-any.whl (762 kB)
+     -------------------------------------- 762.2/762.2 kB 1.4 MB/s eta 0:00:00
+Collecting onnxruntime
+  Downloading onnxruntime-1.27.0-cp311-cp311-win_amd64.whl (13.4 MB)
+     ---------------------------------------- 13.4/13.4 MB 6.1 MB/s eta 0:00:00
+Requirement already satisfied: numpy in c:\project\python\ai assistant\venv\lib\site-packages (from insightface) (2.4.6)
+Collecting onnx
+  Downloading onnx-1.22.0-cp311-cp311-win_amd64.whl (17.2 MB)
+     --------------------------------------- 17.2/17.2 MB 17.2 MB/s eta 0:00:00
+Requirement already satisfied: opencv-python in c:\project\python\ai assistant\venv\lib\site-packages (from insightface) (5.0.0.93)
+Requirement already satisfied: tqdm in c:\project\python\ai assistant\venv\lib\site-packages (from insightface) (4.68.4)
+Requirement already satisfied: requests in c:\project\python\ai assistant\venv\lib\site-packages (from insightface) (2.34.2)
+Collecting scipy
+  Using cached scipy-1.17.1-cp311-cp311-win_amd64.whl (36.6 MB)
+Collecting scikit-image
+  Downloading scikit_image-0.26.0-cp311-cp311-win_amd64.whl (11.9 MB)
+     ---------------------------------------- 11.9/11.9 MB 8.8 MB/s eta 0:00:00
+Requirement already satisfied: flatbuffers in c:\project\python\ai assistant\venv\lib\site-packages (from onnxruntime) (25.12.19)
+Requirement already satisfied: packaging in c:\project\python\ai assistant\venv\lib\site-packages (from onnxruntime) (26.2)
+Requirement already satisfied: protobuf>=4.25.8 in c:\project\python\ai assistant\venv\lib\site-packages (from onnxruntime) (7.35.1)
+Requirement already satisfied: typing_extensions>=4.15.0 in c:\project\python\ai assistant\venv\lib\site-packages (from onnx->insightface) (4.16.0)
+Requirement already satisfied: ml_dtypes>=0.5.4 in c:\project\python\ai assistant\venv\lib\site-packages (from onnx->insightface) (0.5.4)
+Requirement already satisfied: charset_normalizer<4,>=2 in c:\project\python\ai assistant\venv\lib\site-packages (from requests->insightface) (3.4.9)
+Requirement already satisfied: idna<4,>=2.5 in c:\project\python\ai assistant\venv\lib\site-packages (from requests->insightface) (3.18)
+Requirement already satisfied: urllib3<3,>=1.26 in c:\project\python\ai assistant\venv\lib\site-packages (from requests->insightface) (2.7.0)
+Requirement already satisfied: certifi>=2023.5.7 in c:\project\python\ai assistant\venv\lib\site-packages (from requests->insightface) (2026.6.17)
+Requirement already satisfied: networkx>=3.0 in c:\project\python\ai assistant\venv\lib\site-packages (from scikit-image->insightface) (3.6.1)
+Requirement already satisfied: pillow>=10.1 in c:\project\python\ai assistant\venv\lib\site-packages (from scikit-image->insightface) (12.3.0)
+Collecting imageio!=2.35.0,>=2.33
+  Downloading imageio-2.37.3-py3-none-any.whl (317 kB)
+     -------------------------------------- 317.6/317.6 kB 9.9 MB/s eta 0:00:00
+Collecting tifffile>=2022.8.12
+  Downloading tifffile-2026.3.3-py3-none-any.whl (243 kB)
+     -------------------------------------- 244.0/244.0 kB 7.5 MB/s eta 0:00:00
+Collecting lazy-loader>=0.4
+  Downloading lazy_loader-0.5-py3-none-any.whl (8.0 kB)
+Requirement already satisfied: colorama in c:\project\python\ai assistant\venv\lib\site-packages (from tqdm->insightface) (0.4.6)
+Installing collected packages: tifffile, scipy, onnxruntime, lazy-loader, imageio, scikit-image, onnx, insightface
+Successfully installed imageio-2.37.3 insightface-1.0.1 lazy-loader-0.5 onnx-1.22.0 onnxruntime-1.27.0 scikit-image-0.26.0 scipy-1.17.1 tifffile-2026.3.3
