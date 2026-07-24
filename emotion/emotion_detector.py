@@ -3,6 +3,14 @@ import torch
 import logging
 import time
 from typing import Dict, Optional, List, Tuple
+
+# Monkey-patch torch.load to use weights_only=False for hsemotion compatibility
+_original_torch_load = torch.load
+def _patched_torch_load(f, map_location=None, *args, **kwargs):
+    kwargs.setdefault('weights_only', False)
+    return _original_torch_load(f, map_location=map_location, *args, **kwargs)
+torch.load = _patched_torch_load
+
 from hsemotion.facial_emotions import HSEmotionRecognizer
 
 logger = logging.getLogger(__name__)

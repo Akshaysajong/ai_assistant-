@@ -291,24 +291,35 @@ cv2.destroyAllWindows()
 
 # Display emotion report for the session
 print("\n" + "=" * 60)
-print("EMOTION REPORT FOR SESSION")
+print("EMOTION REPORT")
 print("=" * 60)
 
 try:
-    emotions = db.get_emotions_by_session(session_id, time_window_seconds=120)
-    if emotions:
-        from collections import Counter
-        emotion_counts = Counter([e['emotion'] for e in emotions])
-        total_emotions = len(emotions)
-        
+    from emotion.emotion_analyzer import EmotionAnalyzer
+    analyzer = EmotionAnalyzer(db)
+    
+    analysis = analyzer.analyze_last_minutes(session_id, minutes=2)
+    
+    if analysis['total_detections'] > 0:
         print(f"\nSession ID: {session_id}")
-        print(f"Total emotion detections: {total_emotions}")
+        print(f"Total emotion detections: {analysis['total_detections']}")
+        print(f"\nDominant emotion: {analysis['dominant_emotion']}")
+        print(f"Dominance percentage: {analysis['dominance_percentage']:.1f}%")
+        print(f"Average confidence: {analysis['average_confidence']:.3f}")
+        print(f"Trend: {analysis['trends']['direction']}")
+        
+        if analysis['trends']['direction'] == 'changing':
+            print(f"  Changed from: {analysis['trends']['first_half_dominant']}")
+            print(f"  Changed to: {analysis['trends']['second_half_dominant']}")
+        
         print(f"\nEmotion distribution:")
-        for emotion, count in emotion_counts.most_common():
-            percentage = (count / total_emotions) * 100
+        for emotion, count in analysis['emotion_distribution'].items():
+            percentage = (count / analysis['total_detections']) * 100
             print(f"  {emotion}: {count} ({percentage:.1f}%)")
         
-        # Group by person
+        # Get emotions grouped by person
+        emotions = db.get_emotions_by_session(session_id, time_window_seconds=120)
+        from collections import Counter
         person_emotions = {}
         for e in emotions:
             person_id = e['person_id']
@@ -321,7 +332,12 @@ try:
             person_emotion_counts = Counter([e[0] for e in person_data])
             most_common = person_emotion_counts.most_common(1)[0] if person_emotion_counts else ("N/A", 0)
             avg_confidence = sum([e[1] for e in person_data]) / len(person_data)
-            print(f"  Person ID {person_id}:")
+            
+            # Get person name
+            person = db.get_person(person_id)
+            person_name = person['person_name'] if person else "Unknown"
+            
+            print(f"  {person_name} (ID: {person_id}):")
             print(f"    Total detections: {len(person_data)}")
             print(f"    Most common emotion: {most_common[0]} ({most_common[1]} times)")
             print(f"    Average confidence: {avg_confidence:.3f}")

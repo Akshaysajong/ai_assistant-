@@ -11,7 +11,7 @@ from database.unified_db import UnifiedDatabase
 
 class PersonRegister:
     def __init__(self):
-        self.camera = ImageLoader(r"C:\project\python\ai assistant\images\akshay")
+        self.camera = ImageLoader(r"C:\project\python\ai assistant\images\nikhil")
         self.face_detector = FaceDetector()
         self.face_cropper = FaceCropper(
             face_size=(160, 160),

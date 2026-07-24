@@ -6,4 +6,4 @@ from face.register_person import PersonRegister
 
 registration = PersonRegister()
 
-registration.register("Akshay")
+registration.register("Nikhil")
